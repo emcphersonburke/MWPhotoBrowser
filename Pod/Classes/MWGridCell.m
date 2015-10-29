@@ -53,13 +53,14 @@
         
         // Selection button
         _selectedButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _selectedButton.contentMode = UIViewContentModeTopRight;
+        _selectedButton.contentMode = UIViewContentModeCenter;
         _selectedButton.adjustsImageWhenHighlighted = NO;
+        _selectedButton.imageEdgeInsets = UIEdgeInsetsMake( CGRectGetWidth(frame) / 1.6, CGRectGetHeight(frame) / 1.6, 0, 0 );
         [_selectedButton setImage:[UIImage imageForResourcePath:@"MWPhotoBrowser.bundle/ImageSelectedSmallOff" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]] forState:UIControlStateNormal];
         [_selectedButton setImage:[UIImage imageForResourcePath:@"MWPhotoBrowser.bundle/ImageSelectedSmallOn" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]] forState:UIControlStateSelected];
         [_selectedButton addTarget:self action:@selector(selectionButtonPressed) forControlEvents:UIControlEventTouchDown];
         _selectedButton.hidden = YES;
-        _selectedButton.frame = CGRectMake(0, 0, 44, 44);
+        _selectedButton.frame = frame;
         [self addSubview:_selectedButton];
     
 		// Loading indicator
