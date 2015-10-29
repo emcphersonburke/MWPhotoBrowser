@@ -279,6 +279,14 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_PROGRESS_NOTIFICATION object:dict];
     };
     
+    PHContentEditingInputRequestOptions *editOptions = [[PHContentEditingInputRequestOptions alloc]init];
+    editOptions.networkAccessAllowed = YES;
+    [asset requestContentEditingInputWithOptions:editOptions completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+        CIImage *image = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+        NSDictionary *gpsDictionary = [image.properties objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
+        _locationDictionary = gpsDictionary;
+    }];
+    
     _assetRequestID = [imageManager requestImageForAsset:asset targetSize:targetSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage *result, NSDictionary *info) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.underlyingImage = result;

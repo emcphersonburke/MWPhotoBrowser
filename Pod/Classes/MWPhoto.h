@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSURL *videoURL;
 @property (nonatomic) BOOL emptyImage;
 @property (nonatomic) BOOL isVideo;
+@property (nonatomic, readonly) NSDictionary *locationDictionary;
 
 + (MWPhoto *)photoWithImage:(UIImage *)image;
 + (MWPhoto *)photoWithURL:(NSURL *)url;
