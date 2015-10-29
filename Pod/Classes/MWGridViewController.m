@@ -46,7 +46,6 @@
                 _columns = 4, _columnsL = 6;
                 _margin = 0, _gutter = 1;
                 _marginL = 0, _gutterL = 2;
-            } else {
         } else {
             // iPhone 4 inch
             _columns = 3, _columnsL = 5;
