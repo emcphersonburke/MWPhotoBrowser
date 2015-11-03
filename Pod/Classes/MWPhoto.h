@@ -33,5 +33,7 @@
 - (id)initWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize;
 - (id)initWithVideoURL:(NSURL *)url;
 
+- (void)loadLocationData;
+
 @end
 
