@@ -615,6 +615,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         _currentPageIndex = 0;
     }
     
+    _toolbar.hidden = _gridController ? YES : NO;
+    
     // Update layout
     if ([self isViewLoaded]) {
         while (_pagingScrollView.subviews.count) {
