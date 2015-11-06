@@ -146,7 +146,11 @@
     _imageView.image = [_photo underlyingImage];
     _selectedButton.hidden = !_selectionMode;
     if( [_photo respondsToSelector:@selector(isVideo)] && _photo.isVideo ) {
-        _selectedButton.hidden = YES;
+        [_selectedButton setImage:nil forState:UIControlStateNormal];
+        [_selectedButton setImage:nil forState:UIControlStateSelected];
+    } else {
+        [_selectedButton setImage:[UIImage imageForResourcePath:@"MWPhotoBrowser.bundle/ImageSelectedSmallOff" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]] forState:UIControlStateNormal];
+        [_selectedButton setImage:[UIImage imageForResourcePath:@"MWPhotoBrowser.bundle/ImageSelectedSmallOn" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]] forState:UIControlStateSelected];
     }
     [self hideImageFailure];
 }
