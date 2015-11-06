@@ -171,6 +171,7 @@
     [_gridController.browser setPhotoSelected:_selectedButton.selected atIndex:_index];
     if( [_photo respondsToSelector:@selector(isVideo)] && _photo.isVideo ) {
         _selectedButton.selected = NO;
+    }
 }
 
 #pragma mark - Touches
