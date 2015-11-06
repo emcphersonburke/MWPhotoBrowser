@@ -127,6 +127,7 @@
     _photo = photo;
     if ([photo respondsToSelector:@selector(isVideo)]) {
         _videoIndicator.hidden = !photo.isVideo;
+        _selectedButton.hidden = photo.isVideo;
     } else {
         _videoIndicator.hidden = YES;
     }

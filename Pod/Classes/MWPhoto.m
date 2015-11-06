@@ -327,7 +327,6 @@
             CIImage *image = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
             NSDictionary *gpsDictionary = [image.properties objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
             _locationDictionary = gpsDictionary;
-            NSLog(@"gpsidct! %@", gpsDictionary);
         }];
     }
 }
