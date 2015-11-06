@@ -23,7 +23,6 @@
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSURL *photoURL;
-@property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic) CGSize assetTargetSize;
 
 - (void)imageLoadingComplete;
@@ -314,20 +313,6 @@
     } else if (_assetRequestID != PHInvalidImageRequestID) {
         [[PHImageManager defaultManager] cancelImageRequest:_assetRequestID];
         _assetRequestID = PHInvalidImageRequestID;
-    }
-}
-
-- (void)loadLocationData
-{
-    if( _asset )
-    {
-        PHContentEditingInputRequestOptions *editOptions = [[PHContentEditingInputRequestOptions alloc]init];
-        editOptions.networkAccessAllowed = YES;
-        [_asset requestContentEditingInputWithOptions:editOptions completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
-            CIImage *image = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
-            NSDictionary *gpsDictionary = [image.properties objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
-            _locationDictionary = gpsDictionary;
-        }];
     }
 }
 

@@ -145,6 +145,9 @@
 - (void)displayImage {
     _imageView.image = [_photo underlyingImage];
     _selectedButton.hidden = !_selectionMode;
+    if( [_photo respondsToSelector:@selector(isVideo)] && _photo.isVideo ) {
+        _selectedButton.hidden = YES;
+    }
     [self hideImageFailure];
 }
 
