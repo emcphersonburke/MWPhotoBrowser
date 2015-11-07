@@ -63,6 +63,7 @@
 - (id)initWithDelegate:(id <MWPhotoBrowserDelegate>)delegate;
 
 // Reloads the photo browser and refetches data
+- (void)prepareForAnimatedReload;
 - (void)reloadData;
 
 // Set page that photo browser starts on

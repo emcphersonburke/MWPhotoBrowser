@@ -593,6 +593,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     return _currentPageIndex;
 }
 
+- (void)prepareForAnimatedReload
+{
+    _photoCount = NSNotFound;
+}
+
 - (void)reloadData {
     
     // Reset
