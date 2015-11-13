@@ -19,7 +19,7 @@
     UIImageView *_imageView;
     UIImageView *_videoIndicator;
     UIImageView *_loadingError;
-	DACircularProgressView *_loadingIndicator;
+//	DACircularProgressView *_loadingIndicator;
     UIButton *_selectedButton;
     
 }
@@ -64,11 +64,11 @@
         [self addSubview:_selectedButton];
     
 		// Loading indicator
-		_loadingIndicator = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
-        _loadingIndicator.userInteractionEnabled = NO;
-        _loadingIndicator.thicknessRatio = 0.1;
-        _loadingIndicator.roundedCorners = NO;
-		[self addSubview:_loadingIndicator];
+//		_loadingIndicator = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
+//        _loadingIndicator.userInteractionEnabled = NO;
+//        _loadingIndicator.thicknessRatio = 0.1;
+//        _loadingIndicator.roundedCorners = NO;
+//		[self addSubview:_loadingIndicator];
         
         // Listen for photo loading notifications
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -101,10 +101,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     _imageView.frame = self.bounds;
-    _loadingIndicator.frame = CGRectMake(floorf((self.bounds.size.width - _loadingIndicator.frame.size.width) / 2.),
-                                         floorf((self.bounds.size.height - _loadingIndicator.frame.size.height) / 2),
-                                         _loadingIndicator.frame.size.width,
-                                         _loadingIndicator.frame.size.height);
+//    _loadingIndicator.frame = CGRectMake(floorf((self.bounds.size.width - _loadingIndicator.frame.size.width) / 2.),
+//                                         floorf((self.bounds.size.height - _loadingIndicator.frame.size.height) / 2),
+//                                         _loadingIndicator.frame.size.width,
+//                                         _loadingIndicator.frame.size.height);
     _selectedButton.frame = CGRectMake(self.bounds.size.width - _selectedButton.frame.size.width - 0,
                                        0, _selectedButton.frame.size.width, _selectedButton.frame.size.height);
 }
@@ -115,7 +115,7 @@
     _photo = nil;
     _gridController = nil;
     _imageView.image = nil;
-    _loadingIndicator.progress = 0;
+//    _loadingIndicator.progress = 0;
     _selectedButton.hidden = YES;
     [self hideImageFailure];
     [super prepareForReuse];
@@ -133,9 +133,9 @@
     }
     if (_photo) {
         if (![_photo underlyingImage]) {
-            [self showLoadingIndicator];
+//            [self showLoadingIndicator];
         } else {
-            [self hideLoadingIndicator];
+//            [self hideLoadingIndicator];
         }
     } else {
         [self showImageFailure];
@@ -194,12 +194,12 @@
 #pragma mark Indicators
 
 - (void)hideLoadingIndicator {
-    _loadingIndicator.hidden = YES;
+//    _loadingIndicator.hidden = YES;
 }
 
 - (void)showLoadingIndicator {
-    _loadingIndicator.progress = 0;
-    _loadingIndicator.hidden = NO;
+//    _loadingIndicator.progress = 0;
+//    _loadingIndicator.hidden = NO;
     [self hideImageFailure];
 }
 
@@ -218,7 +218,7 @@
                                          _loadingError.frame.size.width,
                                          _loadingError.frame.size.height);
     }
-    [self hideLoadingIndicator];
+//    [self hideLoadingIndicator];
     _imageView.image = nil;
 }
 
@@ -238,7 +238,7 @@
         if (photoWithProgress == _photo) {
 //            NSLog(@"%f", [[dict valueForKey:@"progress"] floatValue]);
             float progress = [[dict valueForKey:@"progress"] floatValue];
-            _loadingIndicator.progress = MAX(MIN(1, progress), 0);
+//            _loadingIndicator.progress = MAX(MIN(1, progress), 0);
         }
     });
 }
@@ -253,7 +253,7 @@
             // Failed to load
             [self showImageFailure];
         }
-        [self hideLoadingIndicator];
+//        [self hideLoadingIndicator];
     }
 }
 
